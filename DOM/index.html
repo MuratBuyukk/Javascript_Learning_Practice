@@ -17,9 +17,13 @@
     <form id="formID" action="www.muratbuyuk.com">
         <input type="text" id="input-text">
     </form>
-    <a class="link link-google" href="https://www.google.com">Google</a>
-    <a class="link link-facebook" href="https://www.facebook.com">Facebook</a>
-    <a class="link link-instagram" href="https://www.instagram.com">Instagram</a>
+    <div class="container" style="background-color: aqua;">
+        <a class="link link-google" href="https://www.google.com" target="_blank">Google</a> <br>
+        <a class="link link-facebook" href="https://www.facebook.com" target="_blank">Facebook</a> <br>
+        <a class="link link-instagram" href="https://www.instagram.com" target="_blank">Instagram</a>
+        <p class="text"></p>
+    </div>
+   
     
     <ul id="list" class="list">
         <li class="list-item">Istanbul</li>
@@ -30,8 +34,28 @@
 
     <div class="list-item">test list item</div>
     <br>
+    <br>
+    <div class="formContainer" style="background-color: cadetblue;">
+        <br>
+        <form action="#" method="post" id="form">
+            <input id="name" type="text" placeholder="name">
+            <select name="city" id="city">
+                <option value="1">Istanbul</option>
+                <option value="2">Paris</option>
+                <option value="3">London</option>
+            </select>
+            <button type="button">Button</button>
+            <button type="reset">Reset</button>
+            <button type="submit">Submit</button>
+        </form>
+        <br>
+        <a href="https://www.google.com" target="_blank" class="formLink">Blog</a>
+        <p class="formText">Hello</p>
+    </div>
+
+    <br>
     <img src="https://www.w3schools.com/w3images/lights.jpg" alt="">
-    <script src="dom_elementAddRemove.js"></script>
+    <script src="dom_event.js"></script>
 </body>
 
 </html>
