@@ -1,0 +1,1 @@
+const screen = new Screen();

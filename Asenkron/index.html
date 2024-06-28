@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #api-result-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        #api-result-table th, 
+        #api-result-table td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        #api-result-table th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn-get-text">Get Text</button>
+    <div id="text-result">
+
+    </div>
+    <button id="btn-get-student">Get JSON</button>
+    <div id="student-result">
+        
+    </div>
+
+    <div id="api-result-div">
+        <button id="btn-get-json-from-api">Get JSON From API</button>
+        <button id="btn-add-json-to-api">Add JSON To API</button>
+        <table id="api-result-table">
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>username</th>
+                <th>email</th>
+            </tr>
+        </table>
+    </div>
+
+
+    <script src="fetch.js"></script>
+</body>
+</html>
