@@ -1,0 +1,21 @@
+{
+  "name": "parcel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel serve ./src/index.html",
+    "prod": "parcel build ./src/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "cssnano": "^4.1.11",
+    "postcss": "^8.4.38",
+    "sass": "^1.77.6"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.19"
+  }
+}
