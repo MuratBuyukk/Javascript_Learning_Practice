@@ -1,0 +1,44 @@
+@BASE_URL = http://localhost:3000
+
+Get {{BASE_URL}}
+###
+GET {{BASE_URL}}/api/users
+###
+GET {{BASE_URL}}/api/users/50
+###
+POST  {{BASE_URL}}/api/users/
+Content-Type: application/json
+
+{
+    "name": "test",
+    "email": "test@gmail.com",
+    "userName": "test",
+    "password" : "test123"
+}
+###
+POST  {{BASE_URL}}/api/users/login
+Content-Type: application/json
+
+{
+    "email": "test@gmail.com",
+    "password" : "test123"
+}
+###
+PATCH {{BASE_URL}}/api/users/668408d2b1540a2f0b83b6d9
+Content-Type: application/json
+
+{
+    "name": "deneme@gmail.com"
+}
+###
+PATCH {{BASE_URL}}/api/users/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Njg0MDhkMmIxNTQwYTJmMGI4M2I2ZDkiLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzE5OTMxNTQzLCJleHAiOjE3MTk5MzUxNDN9.WDjSpqNEDYuiHYFEkf3PuDl9_wbNO0uMHbeTbDtPo7Y
+
+{
+    "name": "ali"
+}
+
+###
+DELETE  {{BASE_URL}}/api/users/6683dc180aa0c55642351633
+Content-Type: application/json

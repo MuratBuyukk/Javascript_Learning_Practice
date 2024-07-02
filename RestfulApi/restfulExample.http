@@ -1,0 +1,21 @@
+@BASE_URL = http://localhost:3000/
+
+Get {{BASE_URL}}
+
+###
+Get {{BASE_URL}}99?toLowerCase=NAME
+
+###
+POST {{BASE_URL}}
+Content-Type: application/json
+
+{
+    "name": "murat",
+    "age" : 25
+}
+
+###
+POST {{BASE_URL}}
+Content-Type: application/x-www-form-urlencoded
+
+name=emre&age=35
