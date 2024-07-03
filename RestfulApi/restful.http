@@ -1,30 +1,32 @@
 @BASE_URL = http://localhost:3000
 
+
 Get {{BASE_URL}}
 ###
 GET {{BASE_URL}}/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Njg1MGI5YWI3YmNkMWJmYTI0ODdjY2UiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTcxOTk5NTUxMywiZXhwIjoxNzE5OTk5MTEzfQ.g5EdbuMVt-6Ozw2XPRpGOx6kOvG0dsDt16Jx0aC4dOY
 ###
-GET {{BASE_URL}}/api/users/50
+GET {{BASE_URL}}/api/users/66850b8fb7bcd1bfa2487ccc
 ###
 POST  {{BASE_URL}}/api/users/
 Content-Type: application/json
 
 {
-    "name": "test",
-    "email": "test@gmail.com",
-    "userName": "test",
-    "password" : "test123"
+    "name": "test23",
+    "email": "test23@gmail.com",
+    "userName": "test23",
+    "password" : "123456"
 }
 ###
 POST  {{BASE_URL}}/api/users/login
 Content-Type: application/json
 
 {
-    "email": "test@gmail.com",
-    "password" : "test123"
+    "email": "admin@gmail.com",
+    "password" : "123456"
 }
 ###
-PATCH {{BASE_URL}}/api/users/668408d2b1540a2f0b83b6d9
+PATCH {{BASE_URL}}/api/users/66850b8fb7bcd1bfa2487ccc
 Content-Type: application/json
 
 {
@@ -33,12 +35,19 @@ Content-Type: application/json
 ###
 PATCH {{BASE_URL}}/api/users/me
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Njg0MDhkMmIxNTQwYTJmMGI4M2I2ZDkiLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzE5OTMxNTQzLCJleHAiOjE3MTk5MzUxNDN9.WDjSpqNEDYuiHYFEkf3PuDl9_wbNO0uMHbeTbDtPo7Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Njg1MGI5YWI3YmNkMWJmYTI0ODdjY2UiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTcxOTk5NTUxMywiZXhwIjoxNzE5OTk5MTEzfQ.g5EdbuMVt-6Ozw2XPRpGOx6kOvG0dsDt16Jx0aC4dOY
+
 
 {
-    "name": "ali"
+    "name": "murat"
 }
 
 ###
-DELETE  {{BASE_URL}}/api/users/6683dc180aa0c55642351633
-Content-Type: application/json
+DELETE  {{BASE_URL}}/api/users/66850b8fb7bcd1bfa2487ccc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Njg1MGI5YWI3YmNkMWJmYTI0ODdjY2UiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTcxOTk5NTUxMywiZXhwIjoxNzE5OTk5MTEzfQ.g5EdbuMVt-6Ozw2XPRpGOx6kOvG0dsDt16Jx0aC4dOY
+###
+DELETE  {{BASE_URL}}/api/users/deleteAll
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Njg1MGI5YWI3YmNkMWJmYTI0ODdjY2UiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTcxOTk5NTUxMywiZXhwIjoxNzE5OTk5MTEzfQ.g5EdbuMVt-6Ozw2XPRpGOx6kOvG0dsDt16Jx0aC4dOY
+###
+DELETE  {{BASE_URL}}/api/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Njg1MGI5YWI3YmNkMWJmYTI0ODdjY2UiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTcxOTk5NTUxMywiZXhwIjoxNzE5OTk5MTEzfQ.g5EdbuMVt-6Ozw2XPRpGOx6kOvG0dsDt16Jx0aC4dOY

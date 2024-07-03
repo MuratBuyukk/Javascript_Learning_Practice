@@ -1,123 +1,27 @@
-const  router = require('express').Router();
-const User = require('../models/userModel.js');
-const createError = require('http-errors');
-const bcrypt = require('bcrypt');
+const router = require('express').Router();
 const authMiddleware = require('../middleware/authMiddleware.js');
+const adminMiddleware = require('../middleware/adminMiddleware.js');
+const userController = require('../controllers/userController.js');
 
-router.get('/', async (req, res) =>{
-    const allUsers = await User.find({});
-    res.json(allUsers);
-});
+router.get('/',[authMiddleware, adminMiddleware], userController.listAllUsers);
 
-router.patch('/me', authMiddleware , async (req, res) =>{
-    res.json(req.user);
-});
+router.get('/me', authMiddleware , userController.loginedUserInfo);
 
-router.get('/me', authMiddleware , async (req, res) =>{
-    delete req.body.createdAt; 
-    delete req.body.createdAt;
-    // delete req.body.password;
+router.patch('/me', authMiddleware , userController.loginedUserUpdate);
 
-    if(req.body.hasOwnProperty('password')){
-        req.body.password = await bcrypt.hash(req.body.password,8);
-    }
+router.get('/:id', userController.getById);
 
-    const {error, value} = User.joiValidationForUpdate(req.body);
-    if(error){
-        next(createError(400,error));
-    }else{
-        try{
-            const result = await User.findByIdAndUpdate({_id: req.user._id}, req.body, {new: true, runValidators: true});
-            if(result){
-                return res.status(200).json(result);
-            }else{
-                return res.status(404).json({
-                    message: 'User not found',
-                })
-            }
-        }catch(err){
-            next(err);
-        }
-    }
-});
+router.post('/', userController.addUser);
 
-router.get('/:id', (req, res) =>{
-    res.json({message : `id: ${req.params.id}, user listed...!`});
-});
+router.post('/login', userController.getLogin);
 
-router.post('/', async (req, res, next) =>{
-    try{
-        const user = new User(req.body);
-        user.password = await bcrypt.hash(user.password, 8);
-        const {error, value} = user.joiValidation(req.body);
-        if(error){
-            next(createError(400,error));
-        }else{
-            const result = await user.save();
-            res.status(200).json(result);
-        }    
-    }catch(err){
-        next(err);
-    }
-});
+router.patch('/:id', userController.updateUser);
 
-router.post('/login', async (req, res, next) => {
-    try{
-        const user = await User.makeLogin(req.body.email, req.body.password);
-        const token = await user.generateToken();
-        res.json({
-            user,
-            token
-        });
-    }catch(err){
-        next(err);
-    }
-});
+router.delete('/deleteAll', [authMiddleware, adminMiddleware], userController.deleteAll);
 
-router.patch('/:id', async (req, res, next) =>{
-    delete req.body.createdAt; 
-    delete req.body.createdAt;
-    // delete req.body.password;
 
-    if(req.body.hasOwnProperty('password')){
-        req.body.password = await bcrypt.hash(req.body.password,8);
-    }
+router.delete('/me', authMiddleware, userController.selfDelete);
 
-    const {error, value} = User.joiValidationForUpdate(req.body);
-    if(error){
-        next(createError(400,error));
-    }else{
-        try{
-            const result = await User.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true, runValidators: true});
-            if(result){
-                return res.status(200).json(result);
-            }else{
-                return res.status(404).json({
-                    message: 'User not found',
-                })
-            }
-        }catch(err){
-            next(err);
-        }
-    }
-});
-
-router.delete('/:id', async (req, res, next) =>{
-    try{
-        const result = await User.findByIdAndDelete({_id: req.params.id});
-        if(result){
-            res.status(200).json({message: 'User deleted succesfully..!'});
-        }else{
-            /* 
-            const errorObj = new Error('');
-            errorObj.errorCode = 404;
-            */
-            throw createError(404, 'User Not Found..!');
-        }
-    }catch(err){
-        next(createError(400,err));
-    }
-});
-
+router.delete('/:id',[authMiddleware, adminMiddleware], userController.deleteUser);
 
 module.exports = router;
